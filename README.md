@@ -1,5 +1,4 @@
 TODO:
-- Update this file
 - Update docs/manual.md
 - Update index.rst
 - Update docs/installation.md
@@ -11,7 +10,7 @@ Each tool in the BIOPET tool suite is meant to offer a standalone function that 
 dedicate data analysis task or added as part of [BIOPET pipelines](http://biopet-docs.readthedocs.io/en/latest/).
 
 #  About this tool
-ExtractTagsFromGtf extracts tags from a GTF file.
+ExtractTagsFromGtf extracts tags from a GTF refflat file.
 
 
 #  Documentation
