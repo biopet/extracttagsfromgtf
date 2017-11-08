@@ -12,7 +12,6 @@ object ExtractTagsFromGtf extends ToolCommand[Args] {
   def emptyArgs: Args = Args()
   def argsParser = new ArgsParser(toolName)
 
-
   def main(args: Array[String]): Unit = {
     val cmdArgs = cmdArrayToArgs(args)
 
@@ -28,7 +27,11 @@ object ExtractTagsFromGtf extends ToolCommand[Args] {
       .map(Feature.fromLine)
       .filter(f => cmdArgs.feature.forall(_ == f.feature))
       .foreach { f =>
-        writer.println(cmdArgs.tags.map(f.attributes.get).map(_.getOrElse(".")).mkString("\t"))
+        writer.println(
+          cmdArgs.tags
+            .map(f.attributes.get)
+            .map(_.getOrElse("."))
+            .mkString("\t"))
       }
 
     reader.close()
