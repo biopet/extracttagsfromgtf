@@ -44,20 +44,26 @@ object ExtractTagsFromGtf extends ToolCommand[Args] {
     s"""
       |
       |
-      |$toolName extracts tags from a GTF refflat file.
+      |$toolName extracts tags from a GTF refflat file
+      |and outputs the results in tsv format.
     """.stripMargin
 
   def manualText: String =
     s"""
-       |$toolName can select tags from a refflat file and optionally filter for a certain feature.
+       |$toolName can select tags from a refflat file and
+       |optionally filter for a specific feature.
+       |The number of tags that can be selected is unlimited,
+       |at least one tag is required.
      """.stripMargin
 
   def exampleText: String =
     s"""
+       |To extract `tag1`, `tag2` and `tag3` from `inputRefflat`
+       |and filter only for feature type `feature`:
        |${example("-i",
                   "inputRefflat",
                   "-o",
-                  "output.gtf",
+                  "output.tsv",
                   "-t",
                   "tag1",
                   "-t",
