@@ -39,4 +39,33 @@ object ExtractTagsFromGtf extends ToolCommand[Args] {
 
     logger.info("Done")
   }
+
+  def descriptionText: String =
+    s"""
+      |
+      |
+      |$toolName extracts tags from a GTF refflat file.
+    """.stripMargin
+
+  def manualText: String =
+    s"""
+       |$toolName can select tags from a refflat file and optionally filter for a certain feature.
+     """.stripMargin
+
+  def exampleText: String =
+    s"""
+       |${example("-i",
+                  "inputRefflat",
+                  "-o",
+                  "output.gtf",
+                  "-t",
+                  "tag1",
+                  "-t",
+                  "tag2",
+                  "-t",
+                  "tag3",
+                  "-f",
+                  "feature")}
+       |
+     """.stripMargin
 }
