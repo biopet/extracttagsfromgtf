@@ -6,11 +6,11 @@ import nl.biopet.utils.tool.{AbstractOptParser, ToolCommand}
 
 class ArgsParser(toolCommand: ToolCommand[Args])
     extends AbstractOptParser[Args](toolCommand) {
-  opt[File]('i', "refflat") required () unbounded () valueName "<file>" action {
+  opt[File]('i', "refflat") required () valueName "<file>" action {
     (x, c) =>
       c.copy(outputFile = x)
   } text "Input refFlat file. Mandatory"
-  opt[File]('o', "gtfFile") required () unbounded () valueName "<file>" action {
+  opt[File]('o', "gtfFile") required () valueName "<file>" action {
     (x, c) =>
       c.copy(gtfFile = x)
   } text "Output gtf file. Mandatory"
@@ -18,7 +18,7 @@ class ArgsParser(toolCommand: ToolCommand[Args])
     (x, c) =>
       c.copy(tags = c.tags ::: x :: Nil)
   } text "Tags to extract"
-  opt[String]('f', "feature") unbounded () valueName "<string>" action {
+  opt[String]('f', "feature") valueName "<string>" action {
     (x, c) =>
       c.copy(feature = Some(x))
   } text "Filter for only this feature type"
