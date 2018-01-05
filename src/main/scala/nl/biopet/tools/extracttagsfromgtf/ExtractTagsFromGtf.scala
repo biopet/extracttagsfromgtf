@@ -63,11 +63,10 @@ object ExtractTagsFromGtf extends ToolCommand[Args] {
 
   def descriptionText: String =
     s"""
-      |
-      |
-      |$toolName extracts tags from a GTF refflat file
-      |and outputs the results in tsv format.
-    """.stripMargin
+       |$toolName extracts tags from a GTF refflat file
+       |and outputs the results in tsv format.
+       |
+     """.stripMargin
 
   def manualText: String =
     s"""
