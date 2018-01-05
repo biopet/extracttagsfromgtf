@@ -1,11 +1,10 @@
 # ExtractTagsFromGtf
 
 
-
-
 ExtractTagsFromGtf extracts tags from a GTF refflat file
 and outputs the results in tsv format.
-    
+
+     
 
 # Documentation
 
