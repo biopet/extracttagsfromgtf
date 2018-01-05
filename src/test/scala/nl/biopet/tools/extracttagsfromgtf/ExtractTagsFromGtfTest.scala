@@ -11,5 +11,8 @@ class ExtractTagsFromGtfTest extends ToolTest[Args] {
     }
   }
 
+  //Simple tool, simple description
+  override def minDescriptionWords: Int = 10
+
   def toolCommand: ExtractTagsFromGtf.type = ExtractTagsFromGtf
 }
