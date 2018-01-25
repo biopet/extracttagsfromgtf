@@ -40,7 +40,9 @@ object ExtractTagsFromGtf extends ToolCommand[Args] {
 
     val reader = Source.fromFile(cmdArgs.gtfFile)
     val writer = new PrintWriter(cmdArgs.outputFile)
-    writer.println(cmdArgs.tags.mkString("#", "\t", ""))
+    writer.print("#")
+    if (cmdArgs.addPositions) writer.print("contig\tstart\tstop\t")
+    writer.println(cmdArgs.tags.mkString("\t"))
 
     reader
       .getLines()
@@ -48,6 +50,8 @@ object ExtractTagsFromGtf extends ToolCommand[Args] {
       .map(Feature.fromLine)
       .filter(f => cmdArgs.feature.forall(_ == f.feature))
       .foreach { f =>
+        if (cmdArgs.addPositions)
+          writer.print(s"${f.contig}\t${f.start}\t${f.end}\t")
         writer.println(
           cmdArgs.tags
             .map(f.attributes.get)
