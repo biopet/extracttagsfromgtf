@@ -26,4 +26,5 @@ import java.io.File
 case class Args(outputFile: File = null,
                 gtfFile: File = null,
                 tags: List[String] = Nil,
-                feature: Option[String] = None)
+                feature: Option[String] = None,
+                addPositions: Boolean = false)
