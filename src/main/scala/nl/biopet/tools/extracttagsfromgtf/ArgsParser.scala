@@ -27,17 +27,37 @@ import nl.biopet.utils.tool.{AbstractOptParser, ToolCommand}
 
 class ArgsParser(toolCommand: ToolCommand[Args])
     extends AbstractOptParser[Args](toolCommand) {
-  opt[File]('i', "refflat") required () valueName "<file>" action { (x, c) =>
-    c.copy(outputFile = x)
-  } text "Input refFlat file. Mandatory"
-  opt[File]('o', "gtfFile") required () valueName "<file>" action { (x, c) =>
-    c.copy(gtfFile = x)
-  } text "Output gtf file. Mandatory"
-  opt[String]('t', "tag") required () unbounded () valueName "<string>" action {
-    (x, c) =>
+  opt[File]('i', "gtfFile")
+    .required()
+    .valueName("<file>")
+    .action { (x, c) =>
+      c.copy(gtfFile = x)
+    }
+    .text("Input gtf file. Mandatory")
+  opt[File]('o', "output")
+    .required()
+    .valueName("<file>")
+    .action { (x, c) =>
+      c.copy(outputFile = x)
+    }
+    .text("Output tsv file. Mandatory")
+  opt[String]('t', "tag")
+    .required()
+    .unbounded()
+    .valueName("<string>")
+    .action { (x, c) =>
       c.copy(tags = c.tags ::: x :: Nil)
-  } text "Tags to extract"
-  opt[String]('f', "feature") valueName "<string>" action { (x, c) =>
-    c.copy(feature = Some(x))
-  } text "Filter for only this feature type"
+    }
+    .text("Tags to extract")
+  opt[String]('f', "feature")
+    .valueName("<string>")
+    .action { (x, c) =>
+      c.copy(feature = Some(x))
+    }
+    .text("Filter for only this feature type")
+  opt[Unit]("addPositions")
+    .action { (x, c) =>
+      c.copy(addPositions = true)
+    }
+    .text("Add positions to output")
 }
